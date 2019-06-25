@@ -1,4 +1,7 @@
 class EntrySerializer < ActiveModel::Serializer
-  attributes :id, :title, :category, :content
-  has_one :user
+  belongs_to :user
+  has_many :comments
+  has_many :likings
+  attributes :id, :title, :category, :content, :user_id, :created_at, :comments
+  # has_one :user
 end
