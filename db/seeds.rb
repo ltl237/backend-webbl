@@ -11,6 +11,7 @@ Liking.destroy_all
 Follow.destroy_all
 User.destroy_all
 Entry.destroy_all
+Message.destroy_all
 
 user1 = User.create(first_name: "Lorenzo", last_name: "Llamas", username: "SeptemberLlamas", password_digest: "x", bio: "Hi I am Lorenzo", age: 23)
 user2 = User.create(first_name: "Tony", last_name: "Stark", username: "IAmIronMan", password_digest: "x", bio: "Hey I am Tony", age: 55)
@@ -24,5 +25,9 @@ comment_on_entry_one = Comment.create(content: "commenting on my own post!", use
 liking_on_entry_two = Liking.create(user_id: user2.id, entry_id: entry2_tony.id)
 liking_on_entry_two_lorenzo = Liking.create(user_id: user2.id, entry_id: entry1_lorenzo.id)
 
-# steve_follows_lorenzo = Follow.create(follower_id: user3.id, followee_id: user1.id)
-# tony_follows_lorenzo = Follow.create(follower_id: user2.id, followee_id: user1.id)
+steve_follows_lorenzo = Follow.create(follower_id: user3.id, followee_id: user1.id)
+tony_follows_lorenzo = Follow.create(follower_id: user2.id, followee_id: user1.id)
+
+
+lorenzo_to_steve = Message.create(content: "I'm the real Captain America ...", sender_id: user1.id, receiver_id: user3.id)
+steve_to_lorenzo = Message.create(content: "Hail Hydra ...", sender_id: user3.id, receiver_id:user1.id)
