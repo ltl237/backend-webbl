@@ -19,5 +19,5 @@ class User < ApplicationRecord
   # has_many :received_messages, through: :received
 
   validates :username, uniqueness: true
-  # has_secure_password
+  has_secure_password
 end

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :entries
 
       # post '/login', to: 'auth#login'
+      # post '/users', to: 'users#index'
       # get '/profile', to: 'users#profile'
       # get "/auto_login", to: "auth#auto_login"
     end

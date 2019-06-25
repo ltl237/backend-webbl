@@ -12,7 +12,7 @@ class Api::V1::EntriesController < ApplicationController
       render json: @entry, status: :accepted
     else
       render json: { errors: @entry.errors.full_messages }, status: :unprocessible_entity
-    end 
+    end
 
   def update
     @entry.update(entry_params)
