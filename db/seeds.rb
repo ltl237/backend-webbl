@@ -13,9 +13,9 @@ User.destroy_all
 Entry.destroy_all
 Message.destroy_all
 
-user1 = User.create(first_name: "Lorenzo", last_name: "Llamas", username: "SeptemberLlamas", password_digest: "x", bio: "Hi I am Lorenzo", age: 23)
-user2 = User.create(first_name: "Tony", last_name: "Stark", username: "IAmIronMan", password_digest: "x", bio: "Hey I am Tony", age: 55)
-user3 = User.create(first_name: "Steve", last_name: "Rogers", username: "Cap", password_digest: "x", bio: "Merica", age: 175)
+user1 = User.create(first_name: "Lorenzo", last_name: "Llamas", username: "SeptemberLlamas", password: "x", bio: "Hi I am Lorenzo", age: 23)
+user2 = User.create(first_name: "Tony", last_name: "Stark", username: "IAmIronMan", password: "x", bio: "Hey I am Tony", age: 55)
+user3 = User.create(first_name: "Steve", last_name: "Rogers", username: "Cap", password: "x", bio: "Merica", age: 175)
 
 entry1_lorenzo = Entry.create(title: "My first post!", category: "Social", content: "Glad to have created my first post!", user_id: user1.id)
 entry2_tony = Entry.create(title: "Thanos Sucks!", category: "Social", content: "I am Iron Man", user_id: user2.id)
