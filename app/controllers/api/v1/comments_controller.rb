@@ -10,6 +10,7 @@ class Api::V1::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     # byebug
     @comment.save
+    # byebug
     render json: @comment
   end
 

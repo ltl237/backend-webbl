@@ -6,15 +6,23 @@ class Api::V1::EntriesController < ApplicationController
   end
 
   def create
+    # byebug
     @entry = Entry.new(entry_params)
     @entry.save
+    byebug
     if @entry.save
       render json: @entry, status: :accepted
     else
       render json: { errors: @entry.errors.full_messages }, status: :unprocessible_entity
     end
+  end
+
+  def edit
+
+  end
 
   def update
+    @entry = Entry.find(params[:id])
     @entry.update(entry_params)
     if @entry.save
       render json: @entry, status: :accepted
