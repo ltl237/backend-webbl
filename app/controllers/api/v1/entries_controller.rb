@@ -6,17 +6,28 @@ class Api::V1::EntriesController < ApplicationController
   end
 
   def create
-    # byebug
     @entry = Entry.new(entry_params)
-    @entry.save
-    byebug
     if @entry.save
-      render json: @entry, status: :accepted
-    else
-      render json: { errors: @entry.errors.full_messages }, status: :unprocessible_entity
+      serialized_data = ActiveModelSerializers::Adapter::Json.new(
+        EntrySerializer.new(@entry)
+      ).serializable_hash
+      ActionCable.server.broadcast 'entries_channel', serialized_data
+      head :ok
     end
   end
-
+  #BEFORE A/C, WORKING
+  # def create
+  #   # byebug
+  #   @entry = Entry.new(entry_params)
+  #   @entry.save
+  #   byebug
+  #   if @entry.save
+  #     render json: @entry, status: :accepted
+  #   else
+  #     render json: { errors: @entry.errors.full_messages }, status: :unprocessible_entity
+  #   end
+  # end
+  #^^BEFORE A/C, WORKING
   def edit
 
   end
