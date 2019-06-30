@@ -7,14 +7,39 @@ class Api::V1::EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(entry_params)
-    if @entry.save
-      serialized_data = ActiveModelSerializers::Adapter::Json.new(
-        EntrySerializer.new(@entry)
-      ).serializable_hash
-      ActionCable.server.broadcast 'entries_channel', serialized_data
-      head :ok
+
+    respond_to do |format|
+      if @entry.save
+        entry_data = {
+          action: 'new_entry',
+          entry: @entry
+        }
+        ActionCable.server.broadcast('entries',entry_data)
+        format.html { redirect_to @entry, notice: 'Ticket was successfully created.' }
+        format.json { render :show, status: :created, location: @entry }
+      else
+        format.html { render :new }
+        format.json { render json: @entry.errors, status: :unprocessable_entity }
+      end
     end
   end
+  #THIS WORKS ALSO WITH SOME A/C. DOESNT REAAALLY WORK
+  # def create
+  #   byebug
+  #   @entry = Entry.new(entry_params)
+  #   puts params[:id]
+  #   if @entry.save
+  #     serialized_data = ActiveModelSerializers::Adapter::Json.new(
+  #       EntrySerializer.new(@entry)
+  #     ).serializable_hash
+  #     ActionCable.server.broadcast 'entries_channel', serialized_data
+  #     head :ok
+  #     # render json: @entry
+  #   end
+  #   # byebug
+  # end
+  #This WORKS ALSO, OLD
+
   #BEFORE A/C, WORKING
   # def create
   #   # byebug
