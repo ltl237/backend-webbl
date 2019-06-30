@@ -9,7 +9,7 @@ class Api::V1::EntriesController < ApplicationController
     # byebug
     @entry = Entry.new(entry_params)
     @entry.save
-    byebug
+    # byebug
     if @entry.save
       render json: @entry, status: :accepted
     else
