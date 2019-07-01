@@ -24,6 +24,7 @@ class Api::V1::EntriesController < ApplicationController
   def update
     @entry = Entry.find(params[:id])
     @entry.update(entry_params)
+    # byebug
     if @entry.save
       render json: @entry, status: :accepted
     else
