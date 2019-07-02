@@ -1,6 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
   has_many :entries
   has_many :comments#, through: :entries
+  # has_many :messages
   # has_many :likings, through: :entries
 
   # has_many :followed_users, foreign_key: :follower_id, class_name: 'Follow'
