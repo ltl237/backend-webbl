@@ -14,11 +14,11 @@ class Api::V1::ConversationsController < ApplicationController
       reverse_title = conversation_params[:title].split('-').reverse().join('-')
       # byebug
 
-      if (Conversation.find_by(title: conversation_params[:title]) || Conversation.find_by(reverse_title))
-        nil
+      # byebug
+      if (Conversation.find_by(title: conversation_params[:title]) || Conversation.find_by(title: reverse_title))
+        render json: (Conversation.find_by(title: conversation_params[:title]) || Conversation.find_by(title: reverse_title))
       else
         conversation = Conversation.new(conversation_params)
-
         if conversation.save
 
             # 2. Create each relationship between conversation and both users via join table user_conversation. Both conversation users are passed in params.

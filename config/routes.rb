@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
 
-  resources :user_conversations
   namespace :api do
     namespace :v1 do
+      resources :user_conversations
       resources :conversations
       resources :messages
       resources :users
