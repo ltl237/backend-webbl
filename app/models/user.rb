@@ -5,8 +5,11 @@ class User < ApplicationRecord
   has_many :likings
   has_many :followees, foreign_key: :followee_id, class_name: 'Follow'
   has_many :followers, foreign_key: :follower_id, class_name: 'Follow'
-  has_and_belongs_to_many :conversations, dependent: :destroy
+  # has_and_belongs_to_many :conversations, dependent: :destroy
   validates :username, uniqueness: true
+
+  has_many :conversations, through: :user_conversations
+
 
   # has_many :followed_users, foreign_key: :follower_id, class_name: 'Follow'
   # has_many :followees, through: :followed_users
