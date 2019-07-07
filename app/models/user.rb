@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :followers, foreign_key: :follower_id, class_name: 'Follow'
   # has_and_belongs_to_many :conversations, dependent: :destroy
   validates :username, uniqueness: true
-
+  ###CAN I USE THIS
+  has_many :user_conversations
   has_many :conversations, through: :user_conversations
 
 

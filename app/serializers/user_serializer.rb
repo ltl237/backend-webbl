@@ -18,5 +18,5 @@ class UserSerializer < ActiveModel::Serializer
   # has_many :received, foreign_key: :receiver_id, class_name: 'Message'
   # has_many :received_messages, through: :received
 
-  attributes :id, :first_name, :last_name, :username, :bio, :age#,:password_digest
+  attributes :id, :first_name, :last_name, :username, :bio, :age, :conversations#,:password_digest
 end
