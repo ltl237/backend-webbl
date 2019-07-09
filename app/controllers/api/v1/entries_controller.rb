@@ -2,6 +2,7 @@ class Api::V1::EntriesController < ApplicationController
   # skip_before_action :authorized
   def index
     # @entries = Entry.all
+    # byebug
     @entries = Entry.order(created_at: :asc)
     # @messages = Message.order(created_at: :asc)
 

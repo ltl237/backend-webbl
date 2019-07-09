@@ -2,7 +2,9 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # action-cable stuff
-  config.action_cable.url = "ws://localhost:3000/cable"
+  config.action_cable.url = "ws:7c0c0174.ngrok.io/cable"
+  # config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
+  config.action_cable.allowed_request_origins = ['http://10.39.106.145:3001', 'http://localhost:3001']
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
